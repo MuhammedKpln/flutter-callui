@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:callui/callui.dart';
+import 'package:flutter_call_ui/callui.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 class MixedExample extends StatefulWidget {

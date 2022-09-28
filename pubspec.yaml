@@ -1,6 +1,6 @@
-name: callui
-description: Call UI
-version: 0.0.1
+name: flutter_call_ui
+description: Backend agnostic call ui for Flutter.
+version: 0.1.0
 homepage: github.com/muhammedkpln
 
 environment:

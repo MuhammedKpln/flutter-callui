@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:callui/src/state/timer.state.dart';
-import 'package:callui/src/utils.dart';
+import 'package:flutter_call_ui/src/state/timer.state.dart';
+import 'package:flutter_call_ui/src/utils.dart';
 import 'package:flutter/material.dart';
 
 /// A mixin for calculating estimating call duration.

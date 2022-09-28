@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
-import 'package:callui/src/theme/base_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_call_ui/src/theme/base_theme.dart';
 
 /// It's a class that defines the default theme for the CallUI
 /// @MuhammedKpln

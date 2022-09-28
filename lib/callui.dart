@@ -1,5 +1,5 @@
 library callui;
 
-export 'package:callui/src/call_core.dart';
-export 'package:callui/src/enums.dart';
-export 'package:callui/src/models/user.model.dart';
+export 'package:flutter_call_ui/src/call_core.dart';
+export 'package:flutter_call_ui/src/enums.dart';
+export 'package:flutter_call_ui/src/models/user.model.dart';

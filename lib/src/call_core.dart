@@ -1,9 +1,9 @@
-import 'package:callui/callui.dart';
-import 'package:callui/src/audio_call.dart';
-import 'package:callui/src/theme/base_theme.dart';
-import 'package:callui/src/theme/theme.dart';
-import 'package:callui/src/video_call.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_call_ui/callui.dart';
+import 'package:flutter_call_ui/src/audio_call.dart';
+import 'package:flutter_call_ui/src/theme/base_theme.dart';
+import 'package:flutter_call_ui/src/theme/theme.dart';
+import 'package:flutter_call_ui/src/video_call.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 class CallUI extends StatefulWidget {
