@@ -13,6 +13,7 @@ class MixedExample extends StatefulWidget {
 
 class _MixedExampleState extends State<MixedExample> {
   CameraState cameraState = CameraState.closed;
+  bool fullScreen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,20 @@ class _MixedExampleState extends State<MixedExample> {
       localStream: widget.stream,
       remoteStream: widget.stream,
       cameraState: cameraState,
+      fullScreen: fullScreen,
       appBarScaffold: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
+      onPressContainer: () {
+        setState(() {
+          fullScreen = !fullScreen;
+        });
+      },
       user: CallUserModel(
           avatar:
               'https://github.com/abuanwar072/Calling-Interface-Flutter/blob/master/assets/images/full_image.png?raw=true',
