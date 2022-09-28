@@ -1,8 +1,6 @@
-import 'dart:async';
-
 import 'package:callui/callui.dart';
 import 'package:callui/src/actions.dart';
-import 'package:callui/src/utils.dart';
+import 'package:callui/src/mixins/Timer.mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -27,32 +25,11 @@ class AudioCall extends CallUI {
   State<AudioCall> createState() => _AudioCallState();
 }
 
-class _AudioCallState extends State<AudioCall> {
-  DateTime date = DateTime(DateTime.now().year, 0, 0);
-  late Timer timer;
-
+class _AudioCallState extends State<AudioCall> with TimerMixin<AudioCall> {
   @override
   void initState() {
     super.initState();
-    print('object');
-    _startTimer();
     initializeDateFormatting();
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
-
-  void _startTimer() {
-    const duration = Duration(seconds: 1);
-
-    timer = Timer.periodic(duration, (_) {
-      setState(() {
-        date = date.add(duration);
-      });
-    });
   }
 
   Widget _renderBottomNavigationBar() {
@@ -68,9 +45,8 @@ class _AudioCallState extends State<AudioCall> {
 
   @override
   Widget build(BuildContext context) {
-    final formattedDate = formatDate(date);
-
     return Scaffold(
+      appBar: widget.appBarScaffold,
       bottomNavigationBar: _renderBottomNavigationBar(),
       body: Stack(
         fit: StackFit.expand,
@@ -95,12 +71,14 @@ class _AudioCallState extends State<AudioCall> {
                         .headline3
                         ?.copyWith(color: Colors.white),
                   ),
-                  Text(
-                    'Incoming $formattedDate'.toUpperCase(),
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.6),
-                    ),
-                  ),
+                  renderEstimatedCall((formattedDate) {
+                    return Text(
+                      'Incoming $formattedDate'.toUpperCase(),
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.6),
+                      ),
+                    );
+                  })
                 ],
               ),
             ),

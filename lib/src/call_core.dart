@@ -136,6 +136,16 @@ class CallUI extends StatefulWidget {
 }
 
 class _CallUIState extends State<CallUI> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   bool get isCameraOpened =>
       widget.cameraState == CameraState.open ||
       widget.cameraState == CameraState.front ||
@@ -143,38 +153,39 @@ class _CallUIState extends State<CallUI> {
 
   @override
   Widget build(BuildContext context) {
-    if (isCameraOpened) {
-      return VideoCall(
-        appBarScaffold: widget.appBarScaffold,
-        customActionWidget: widget.customActionWidget,
-        fullScreen: widget.fullScreen,
-        onPressContainer: widget.onPressContainer,
-        theme: widget.theme,
-        remoteStream: widget.remoteStream,
-        localStream: widget.localStream,
-        onPressCamera: widget.onPressCamera,
-        onPressHangup: widget.onPressHangup,
-        onPressMic: widget.onPressMic,
-        user: widget.user,
-        cameraState: widget.cameraState,
-        micState: widget.micState,
-      );
-    }
-
-    return AudioCall(
-      appBarScaffold: widget.appBarScaffold,
-      customActionWidget: widget.customActionWidget,
-      fullScreen: widget.fullScreen,
-      onPressContainer: widget.onPressContainer,
-      theme: widget.theme,
-      remoteStream: widget.remoteStream,
-      localStream: widget.localStream,
-      onPressCamera: widget.onPressCamera,
-      onPressHangup: widget.onPressHangup,
-      onPressMic: widget.onPressMic,
-      user: widget.user,
-      cameraState: widget.cameraState,
-      micState: widget.micState,
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 200),
+      child: isCameraOpened
+          ? VideoCall(
+              appBarScaffold: widget.appBarScaffold,
+              customActionWidget: widget.customActionWidget,
+              fullScreen: widget.fullScreen,
+              onPressContainer: widget.onPressContainer,
+              theme: widget.theme,
+              remoteStream: widget.remoteStream,
+              localStream: widget.localStream,
+              onPressCamera: widget.onPressCamera,
+              onPressHangup: widget.onPressHangup,
+              onPressMic: widget.onPressMic,
+              user: widget.user,
+              cameraState: widget.cameraState,
+              micState: widget.micState,
+            )
+          : AudioCall(
+              appBarScaffold: widget.appBarScaffold,
+              customActionWidget: widget.customActionWidget,
+              fullScreen: widget.fullScreen,
+              onPressContainer: widget.onPressContainer,
+              theme: widget.theme,
+              remoteStream: widget.remoteStream,
+              localStream: widget.localStream,
+              onPressCamera: widget.onPressCamera,
+              onPressHangup: widget.onPressHangup,
+              onPressMic: widget.onPressMic,
+              user: widget.user,
+              cameraState: widget.cameraState,
+              micState: widget.micState,
+            ),
     );
   }
 }
