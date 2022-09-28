@@ -59,8 +59,6 @@ class _VideoCallState extends State<VideoCall> {
   @override
   void initState() {
     super.initState();
-    print('CAMERA');
-
     _initRenderer();
   }
 
@@ -171,8 +169,6 @@ class _VideoCallState extends State<VideoCall> {
 
   @override
   Widget build(BuildContext context) {
-    print('object');
-
     final localCamera = CameraRenderer(
       renderer: localRenderer,
     );

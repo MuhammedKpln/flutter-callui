@@ -51,7 +51,6 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(cameraState);
     return _Render(
       child: ColoredBox(
         color: theme.backgoundColor,
