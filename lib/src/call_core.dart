@@ -13,11 +13,14 @@ class CallUI extends StatefulWidget {
     required this.onPressCamera,
     required this.onPressHangup,
     required this.onPressMic,
+    required this.user,
     this.fullScreen,
     this.onPressContainer,
     this.customActionWidget,
     this.appBarScaffold,
     this.theme = const CallUIDefaultTheme(),
+    this.cameraState = CameraState.closed,
+    this.micState = MicState.open,
   });
 
   factory CallUI.VideoCall({
@@ -26,10 +29,13 @@ class CallUI extends StatefulWidget {
     required VoidCallback onPressCamera,
     required VoidCallback onPressHangup,
     required VoidCallback onPressMic,
+    required CallUserModel user,
     bool? fullScreen,
     VoidCallback? onPressContainer,
     Widget? customActionWidget,
     PreferredSizeWidget? appBarScaffold,
+    CameraState cameraState = CameraState.closed,
+    MicState micState = MicState.closed,
     BaseTheme theme = const CallUIDefaultTheme(),
   }) {
     return VideoCall(
@@ -43,6 +49,9 @@ class CallUI extends StatefulWidget {
       fullScreen: fullScreen,
       onPressContainer: onPressContainer,
       theme: theme,
+      user: user,
+      cameraState: cameraState,
+      micState: micState,
     );
   }
 
@@ -57,6 +66,8 @@ class CallUI extends StatefulWidget {
     VoidCallback? onPressContainer,
     Widget? customActionWidget,
     PreferredSizeWidget? appBarScaffold,
+    CameraState cameraState = CameraState.closed,
+    MicState micState = MicState.closed,
     BaseTheme theme = const CallUIDefaultTheme(),
   }) {
     return AudioCall(
@@ -71,6 +82,8 @@ class CallUI extends StatefulWidget {
       onPressContainer: onPressContainer,
       theme: theme,
       user: user,
+      cameraState: cameraState,
+      micState: micState,
     );
   }
 
@@ -104,6 +117,15 @@ class CallUI extends StatefulWidget {
   /// A default theme for the callui.
   BaseTheme theme = const CallUIDefaultTheme();
 
+  /// A default theme for the callui.
+  CameraState cameraState = CameraState.closed;
+
+  /// A default theme for the callui.
+  MicState micState = MicState.closed;
+
+  /// A default theme for the callui.
+  CallUserModel user;
+
   @override
   Widget build(BuildContext context) {
     return const SizedBox();
@@ -114,8 +136,45 @@ class CallUI extends StatefulWidget {
 }
 
 class _CallUIState extends State<CallUI> {
+  bool get isCameraOpened =>
+      widget.cameraState == CameraState.open ||
+      widget.cameraState == CameraState.front ||
+      widget.cameraState == CameraState.back;
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    if (isCameraOpened) {
+      return VideoCall(
+        appBarScaffold: widget.appBarScaffold,
+        customActionWidget: widget.customActionWidget,
+        fullScreen: widget.fullScreen,
+        onPressContainer: widget.onPressContainer,
+        theme: widget.theme,
+        remoteStream: widget.remoteStream,
+        localStream: widget.localStream,
+        onPressCamera: widget.onPressCamera,
+        onPressHangup: widget.onPressHangup,
+        onPressMic: widget.onPressMic,
+        user: widget.user,
+        cameraState: widget.cameraState,
+        micState: widget.micState,
+      );
+    }
+
+    return AudioCall(
+      appBarScaffold: widget.appBarScaffold,
+      customActionWidget: widget.customActionWidget,
+      fullScreen: widget.fullScreen,
+      onPressContainer: widget.onPressContainer,
+      theme: widget.theme,
+      remoteStream: widget.remoteStream,
+      localStream: widget.localStream,
+      onPressCamera: widget.onPressCamera,
+      onPressHangup: widget.onPressHangup,
+      onPressMic: widget.onPressMic,
+      user: widget.user,
+      cameraState: widget.cameraState,
+      micState: widget.micState,
+    );
   }
 }

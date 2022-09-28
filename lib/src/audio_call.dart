@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:callui/callui.dart';
-import 'package:callui/src/components/RoundedButton.dart';
+import 'package:callui/src/actions.dart';
 import 'package:callui/src/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -18,11 +18,10 @@ class AudioCall extends CallUI {
     required super.fullScreen,
     required super.onPressContainer,
     required super.theme,
-    required this.user,
+    required super.user,
+    required super.cameraState,
+    required super.micState,
   }) : super();
-
-  /// A custom model that you can use to pass data to the call screen.
-  CallUserModel user;
 
   @override
   State<AudioCall> createState() => _AudioCallState();
@@ -56,11 +55,23 @@ class _AudioCallState extends State<AudioCall> {
     });
   }
 
+  Widget _renderBottomNavigationBar() {
+    return ActionButtons(
+      onPressCamera: widget.onPressCamera,
+      onPressHangup: widget.onPressHangup,
+      onPressMic: widget.onPressMic,
+      cameraState: widget.cameraState,
+      micState: widget.micState,
+      theme: widget.theme,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final formattedDate = formatDate(date);
 
     return Scaffold(
+      bottomNavigationBar: _renderBottomNavigationBar(),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -89,26 +100,6 @@ class _AudioCallState extends State<AudioCall> {
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.6),
                     ),
-                  ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RoundedButton(
-                        press: widget.onPressMic,
-                        icon: Icons.mic,
-                      ),
-                      RoundedButton(
-                        press: widget.onPressHangup,
-                        color: widget.theme.redColor,
-                        iconColor: Colors.white,
-                        icon: Icons.phone_paused,
-                      ),
-                      RoundedButton(
-                        press: widget.onPressCamera,
-                        icon: Icons.camera,
-                      ),
-                    ],
                   ),
                 ],
               ),

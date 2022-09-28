@@ -1,10 +1,9 @@
 import 'package:callui/callui.dart';
 import 'package:callui/src/actions.dart';
+import 'package:callui/src/call_core.dart';
 import 'package:callui/src/renderer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
-
-import 'package:callui/src/call_core.dart';
 
 class VideoCall extends CallUI {
   VideoCall({
@@ -13,6 +12,9 @@ class VideoCall extends CallUI {
     required super.onPressCamera,
     required super.onPressHangup,
     required super.onPressMic,
+    required super.user,
+    required super.cameraState,
+    required super.micState,
     super.fullScreen,
     super.onPressContainer,
     super.customActionWidget,
@@ -89,6 +91,8 @@ class _VideoCallState extends State<VideoCall> {
         onPressCamera: widget.onPressCamera,
         onPressHangup: widget.onPressHangup,
         onPressMic: widget.onPressMic,
+        cameraState: widget.cameraState,
+        micState: widget.micState,
         theme: widget.theme,
       ),
       secondChild: const SizedBox(),
@@ -134,6 +138,8 @@ class _VideoCallState extends State<VideoCall> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.cameraState);
+
     final localCamera = CameraRenderer(
       renderer: localRenderer,
     );

@@ -1,3 +1,4 @@
+import 'package:callui/callui.dart';
 import 'package:callui/src/components/RoundedButton.dart';
 import 'package:callui/src/theme/base_theme.dart';
 import 'package:callui/src/theme/theme.dart';
@@ -9,6 +10,8 @@ class ActionButtons extends StatelessWidget {
     required this.onPressCamera,
     required this.onPressHangup,
     required this.onPressMic,
+    required this.cameraState,
+    required this.micState,
     this.customWidget,
     this.theme = const CallUIDefaultTheme(),
   });
@@ -28,6 +31,12 @@ class ActionButtons extends StatelessWidget {
   /// Theme
   BaseTheme theme;
 
+  /// Microphone state
+  MicState micState;
+
+  /// Camera state
+  CameraState cameraState;
+
   /// Render is a function that
   ///
   /// Args:
@@ -42,6 +51,7 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(cameraState);
     return _Render(
       child: ColoredBox(
         color: theme.backgoundColor,
@@ -53,14 +63,14 @@ class ActionButtons extends StatelessWidget {
                 RoundedButton(
                   color: theme.redColor,
                   iconColor: Colors.white,
-                  icon: Icons.close,
+                  icon: Icons.phone_disabled,
                   press: onPressHangup,
                 ),
                 const Spacer(),
                 RoundedButton(
                   color: theme.secondaryColor,
                   iconColor: Colors.white,
-                  icon: Icons.mic,
+                  icon: micState.icon,
                   press: onPressMic,
                 ),
                 Padding(
@@ -68,7 +78,7 @@ class ActionButtons extends StatelessWidget {
                   child: RoundedButton(
                     color: theme.secondaryColor,
                     iconColor: Colors.white,
-                    icon: Icons.videocam_off,
+                    icon: cameraState.icon,
                     press: onPressCamera,
                   ),
                 ),

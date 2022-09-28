@@ -1,6 +1,8 @@
+import 'package:example/audio_call_example.dart';
+import 'package:example/mixed_example.dart';
+import 'package:example/video_call_example.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
-import 'package:callui/callui.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(
+          title: "CallUI Example",
+        ));
   }
 }
 
@@ -67,27 +70,30 @@ class _MyHomePageState extends State<MyHomePage> {
       return const CircularProgressIndicator();
     }
 
-    return CallUI.AudioCall(
-      localStream: localStream!,
-      remoteStream: remoteStream!,
-      fullScreen: fullscren,
-      onPressCamera: () => null,
-      onPressHangup: () => null,
-      onPressMic: () => null,
-      user: CallUserModel(
-          avatar:
-              'https://github.com/abuanwar072/Calling-Interface-Flutter/blob/master/assets/images/full_image.png?raw=true',
-          username: 'Muhammed Kaplan'),
-      appBarScaffold: AppBar(
-        leading: const Icon(Icons.arrow_back),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ElevatedButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => AudioCallExample(
+                        stream: localStream!,
+                      ))),
+              child: const Text("Call Example")),
+          ElevatedButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => VideoCallExample(
+                        stream: localStream!,
+                      ))),
+              child: const Text("Video Example")),
+          ElevatedButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MixedExample(
+                        stream: localStream!,
+                      ))),
+              child: const Text("Mixed Example"))
+        ],
       ),
-      onPressContainer: () {
-        setState(() {
-          fullscren = !fullscren;
-        });
-      },
     );
   }
 }
