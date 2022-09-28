@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_call_ui/flutter_call_ui.dart';
 import 'package:flutter_call_ui/src/actions.dart';
@@ -32,6 +34,7 @@ class _VideoCallState extends State<VideoCall> {
   final RTCVideoRenderer remoteRenderer = RTCVideoRenderer();
   Offset cameraOffset = Offset.zero;
   bool userFull = false;
+  bool enabledFullscreen = false;
 
   double get isFullScreenOpacity {
     if (isFullscreen) {
@@ -43,7 +46,7 @@ class _VideoCallState extends State<VideoCall> {
 
   bool get isFullscreen {
     if (widget.fullScreen != null) {
-      if (widget.fullScreen!) {
+      if (widget.fullScreen! || enabledFullscreen) {
         return true;
       }
 
@@ -66,6 +69,34 @@ class _VideoCallState extends State<VideoCall> {
     localRenderer.dispose();
     remoteRenderer.dispose();
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(VideoCall oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    _swtichToFullscreenAutomatically();
+  }
+
+  /// If full screen is turned off, turn it automatically after 5 seconds.
+  /// @MuhammedKpln
+  void _swtichToFullscreenAutomatically() {
+    if (widget.fullScreen != null && !widget.fullScreen!) {
+      Future.delayed(
+        const Duration(seconds: 5),
+        () {
+          setState(() {
+            enabledFullscreen = true;
+          });
+        },
+      );
+    }
+
+    if (enabledFullscreen) {
+      setState(() {
+        enabledFullscreen = false;
+      });
+    }
   }
 
   Future<void> _initRenderer() async {
