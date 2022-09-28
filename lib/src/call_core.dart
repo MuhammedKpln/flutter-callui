@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_call_ui/callui.dart';
+import 'package:flutter_call_ui/flutter_call_ui.dart';
 import 'package:flutter_call_ui/src/audio_call.dart';
 import 'package:flutter_call_ui/src/theme/base_theme.dart';
 import 'package:flutter_call_ui/src/theme/theme.dart';

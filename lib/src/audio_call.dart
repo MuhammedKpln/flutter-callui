@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_call_ui/callui.dart';
+import 'package:flutter_call_ui/flutter_call_ui.dart';
 import 'package:flutter_call_ui/src/actions.dart';
 import 'package:flutter_call_ui/src/mixins/Timer.mixin.dart';
 import 'package:intl/date_symbol_data_local.dart';

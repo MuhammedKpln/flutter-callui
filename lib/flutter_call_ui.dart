@@ -1,4 +1,4 @@
-library callui;
+library flutter_call_ui;
 
 export 'package:flutter_call_ui/src/call_core.dart';
 export 'package:flutter_call_ui/src/enums.dart';
