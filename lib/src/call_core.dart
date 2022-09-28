@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_call_ui/flutter_call_ui.dart';
 import 'package:flutter_call_ui/src/audio_call.dart';
@@ -6,8 +8,14 @@ import 'package:flutter_call_ui/src/theme/theme.dart';
 import 'package:flutter_call_ui/src/video_call.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
+/// It's a stateful widget that switches between
+/// the audio and video call UI based on the camera state
+/// @MuhammedKpln
+// ignore: must_be_immutable
 class CallUI extends StatefulWidget {
+  // ignore: public_member_api_docs
   CallUI({
+    super.key,
     required this.remoteStream,
     required this.localStream,
     required this.onPressCamera,
@@ -24,6 +32,34 @@ class CallUI extends StatefulWidget {
     this.locale = const CallENLocale(),
   });
 
+  /// A factory constructor that returns a VideoCall widget.
+  ///
+  /// Args:
+  ///   localStream (MediaStream): The local stream of the user.
+  ///   remoteStream (MediaStream): The remote stream that is being received from the other user.
+  ///   onPressCamera (VoidCallback): This is the callback that is called when the user presses the
+  /// camera button.
+  ///   onPressHangup (VoidCallback): This is the callback that is called when the user presses the
+  /// hangup button.
+  ///   onPressMic (VoidCallback): This is a callback that is called when the user presses the mic
+  /// button.
+  ///   user (CallUserModel): The user model that contains the user's name and avatar.
+  ///   fullScreen (bool): If you want to show the video call in full screen mode, set this to true.
+  ///   onPressContainer (VoidCallback): This is the callback that is called when the user taps on the
+  /// screen.
+  ///   customActionWidget (Widget): This is a widget that you can pass to the call screen. It will be
+  /// displayed on the top right corner of the screen.
+  ///   appBarScaffold (PreferredSizeWidget): This is the app bar that will be displayed on the top of
+  /// the screen.
+  ///   cameraState (CameraState): The state of the camera. Defaults to CameraState
+  ///   micState (MicState): The state of the microphone. Defaults to MicState
+  ///   theme (BaseTheme): This is the theme of the call UI. You can use the default theme or create
+  /// your own. Defaults to const CallUIDefaultTheme()
+  ///   locale (BaseLocale): The locale of the call screen.Defaults to const CallENLocale()
+  ///
+  /// Returns:
+  ///   A VideoCall widget.
+  // ignore: non_constant_identifier_names
   factory CallUI.VideoCall({
     required MediaStream localStream,
     required MediaStream remoteStream,
@@ -58,6 +94,34 @@ class CallUI extends StatefulWidget {
     );
   }
 
+  /// A factory constructor that returns an AudioCall widget.
+  ///
+  /// Args:
+  ///   localStream (MediaStream): The local stream of the user.
+  ///   remoteStream (MediaStream): The remote stream that is being received from the other user.
+  ///   onPressCamera (VoidCallback): This is the callback that is called when the user presses the
+  /// camera button.
+  ///   onPressHangup (VoidCallback): This is the callback that is called when the user presses the
+  /// hangup button.
+  ///   onPressMic (VoidCallback): This is a callback that is called when the user presses the mic
+  /// button.
+  ///   user (CallUserModel): The user model that contains the user's name and avatar.
+  ///   fullScreen (bool): If you want to show the call screen in full screen mode, set this to true.
+  ///   onPressContainer (VoidCallback): This is the callback that is called when the user taps on the
+  /// screen.
+  ///   customActionWidget (Widget): This is a widget that you can pass to the call screen. It will be
+  /// displayed on the top right corner of the screen.
+  ///   appBarScaffold (PreferredSizeWidget): This is the app bar that will be displayed on the top of
+  /// the screen.
+  ///   cameraState (CameraState): The state of the camera. Defaults to CameraState
+  ///   micState (MicState): The state of the microphone. Defaults to MicState
+  ///   theme (BaseTheme): This is the theme of the UI. You can use the default theme or create your
+  /// own. Defaults to const CallUIDefaultTheme()
+  ///   locale (BaseLocale): The locale of the call screen. Defaults to const CallENLocale()
+  ///
+  /// Returns:
+  ///   A widget.
+  // ignore: non_constant_identifier_names
   factory CallUI.AudioCall({
     required MediaStream localStream,
     required MediaStream remoteStream,
@@ -93,31 +157,31 @@ class CallUI extends StatefulWidget {
   }
 
   /// A variable that is used to store the remote stream.
-  MediaStream remoteStream;
+  final MediaStream remoteStream;
 
   /// A variable that is used to store the local stream.
-  MediaStream localStream;
+  final MediaStream localStream;
 
   /// Hides action buttons.
-  bool? fullScreen;
+  final bool? fullScreen;
 
   /// A callback that is called when the user presses the container.
-  VoidCallback? onPressContainer;
+  final VoidCallback? onPressContainer;
 
   /// A callback that is called when the user presses the mic button.
-  VoidCallback onPressMic;
+  final VoidCallback onPressMic;
 
   /// A callback that is called when the user presses the camera button.
-  VoidCallback onPressCamera;
+  final VoidCallback onPressCamera;
 
   /// A callback that is called when the user presses the hangup.
-  VoidCallback onPressHangup;
+  final VoidCallback onPressHangup;
 
   /// Custom action widget
-  Widget? customActionWidget;
+  final Widget? customActionWidget;
 
   /// Custom AppBar for Scaffold
-  PreferredSizeWidget? appBarScaffold;
+  final PreferredSizeWidget? appBarScaffold;
 
   /// A default theme for the callui.
   BaseTheme theme = const CallUIDefaultTheme();
@@ -129,15 +193,10 @@ class CallUI extends StatefulWidget {
   MicState micState = MicState.closed;
 
   /// A default theme for the callui.
-  CallUserModel user;
+  final CallUserModel user;
 
   /// App locale
   BaseLocale locale;
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox();
-  }
 
   @override
   State<CallUI> createState() => _CallUIState();

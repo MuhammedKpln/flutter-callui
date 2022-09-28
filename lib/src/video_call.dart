@@ -7,8 +7,14 @@ import 'package:flutter_call_ui/src/call_core.dart';
 import 'package:flutter_call_ui/src/renderer.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
+/// It renders the local and remote camera streams and provides
+/// a draggable widget for the local camera stream
+/// @MuhammedKpln
+// ignore: must_be_immutable
 class VideoCall extends CallUI {
+  // ignore: public_member_api_docs
   VideoCall({
+    super.key,
     required super.remoteStream,
     required super.localStream,
     required super.onPressCamera,
@@ -23,7 +29,7 @@ class VideoCall extends CallUI {
     super.appBarScaffold,
     super.theme,
     super.locale,
-  }) : super();
+  });
 
   @override
   State<VideoCall> createState() => _VideoCallState();

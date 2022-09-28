@@ -4,8 +4,17 @@ import 'package:flutter_call_ui/src/actions.dart';
 import 'package:flutter_call_ui/src/mixins/Timer.mixin.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+/// It's a stateful widget that renders a Scaffold with a Stack as the body.
+/// The Stack has a background
+/// image, a black overlay, and a SafeArea with the username and estimated call
+/// duration
+/// @MuhammedKpln
+
+// ignore: must_be_immutable
 class AudioCall extends CallUI {
+  // ignore: public_member_api_docs
   AudioCall({
+    super.key,
     required super.remoteStream,
     required super.localStream,
     required super.onPressCamera,
@@ -20,7 +29,7 @@ class AudioCall extends CallUI {
     required super.cameraState,
     required super.micState,
     super.locale,
-  }) : super();
+  });
 
   @override
   State<AudioCall> createState() => _AudioCallState();

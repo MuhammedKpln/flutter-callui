@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
+/// `CameraRenderer` is a `StatelessWidget` that renders a `RTCVideoView`
+///  with the given `RTCVideoRenderer` and optional parameters
 class CameraRenderer extends StatelessWidget {
-  CameraRenderer({
+  // ignore: public_member_api_docs
+  const CameraRenderer({
     super.key,
     required this.renderer,
     this.filterQuality,
@@ -11,16 +14,16 @@ class CameraRenderer extends StatelessWidget {
   });
 
   /// Renderer
-  RTCVideoRenderer renderer;
+  final RTCVideoRenderer renderer;
 
   /// Fitting camera
-  RTCVideoViewObjectFit? objectFit;
+  final RTCVideoViewObjectFit? objectFit;
 
   /// Mirror effect
-  bool? mirror;
+  final bool? mirror;
 
   /// Quality of renderer
-  FilterQuality? filterQuality;
+  final FilterQuality? filterQuality;
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_call_ui/flutter_call_ui.dart';
-import 'package:flutter_call_ui/src/components/RoundedButton.dart';
+import 'package:flutter_call_ui/src/components/rounded_button.dart';
 import 'package:flutter_call_ui/src/theme/base_theme.dart';
 import 'package:flutter_call_ui/src/theme/theme.dart';
 
+/// `ActionButtons` is a stateless widget that renders a row of buttons
+/// for controlling the call
+/// @MuhammedKpln
 class ActionButtons extends StatelessWidget {
-  ActionButtons({
+  // ignore: public_member_api_docs
+  const ActionButtons({
     super.key,
     required this.onPressCamera,
     required this.onPressHangup,
@@ -17,31 +21,27 @@ class ActionButtons extends StatelessWidget {
   });
 
   /// On Press Mic buton
-  VoidCallback onPressMic;
+  final VoidCallback onPressMic;
 
   /// On Press Camera button
-  VoidCallback onPressCamera;
+  final VoidCallback onPressCamera;
 
   /// On Press Hangup button
-  VoidCallback onPressHangup;
+  final VoidCallback onPressHangup;
 
   /// A custom widget for rendering action buttons
-  Widget? customWidget;
+  final Widget? customWidget;
 
   /// Theme
-  BaseTheme theme;
+  final BaseTheme theme;
 
   /// Microphone state
-  MicState micState;
+  final MicState micState;
 
   /// Camera state
-  CameraState cameraState;
+  final CameraState cameraState;
 
-  /// Render is a function that
-  ///
-  /// Args:
-  ///   child (Widget): The widget that will be rendered.
-  Widget _Render({required Widget child}) {
+  Widget _renderConditinally({required Widget child}) {
     if (customWidget != null) {
       return customWidget!;
     }
@@ -51,7 +51,7 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _Render(
+    return _renderConditinally(
       child: ColoredBox(
         color: theme.backgoundColor,
         child: SafeArea(

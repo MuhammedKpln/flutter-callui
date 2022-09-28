@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// A button with a rounded shape and an icon
 class RoundedButton extends StatelessWidget {
+  // ignore: public_member_api_docs
   const RoundedButton({
     super.key,
     this.color = Colors.white,
@@ -9,8 +11,16 @@ class RoundedButton extends StatelessWidget {
     required this.icon,
   });
 
+  /// A variable that is used to store the icon that is passed in.
   final IconData icon;
-  final Color color, iconColor;
+
+  /// Declaring a variable called `color` of type `Color`.
+  final Color color;
+
+  /// Declaring a variable called `iconColor` of type `Color`.
+  final Color iconColor;
+
+  /// A function that is called when the button is pressed.
   final VoidCallback press;
 
   @override

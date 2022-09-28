@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_call_ui/src/state/timer.state.dart';
 import 'package:flutter_call_ui/src/utils.dart';
-import 'package:flutter/material.dart';
 
 /// A mixin for calculating estimating call duration.
 mixin TimerMixin<T extends StatefulWidget> on State<T> {
@@ -44,9 +44,13 @@ mixin TimerMixin<T extends StatefulWidget> on State<T> {
           case ConnectionState.active:
             final formattedDate = formatDate(estimatedCallDate);
             return callback.call(formattedDate);
+          case ConnectionState.none:
+            return callback.call('');
+          case ConnectionState.waiting:
+            return callback.call('');
+          case ConnectionState.done:
+            return callback.call('');
         }
-
-        return const SizedBox();
       },
     );
   }
