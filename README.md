@@ -1,39 +1,37 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+<br>
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+<h1 align="center">Flutter Call UI</h1>
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+<p align="center">
+    An agnostic fully functional call UI implementation.
+</p>
+<br>
+<p align="center">
+  <a href="#">
+    <img alt="Call Image" src="https://i.imgur.com/dLKMCpd.png" width=200 />
+  </a>
+</p>
 
-## Features
+<br>
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+* **Free, open-source and community-driven**. We offer no paid plugins and strive to create an easy-to-use, almost drop-in call experience for any application. Contributions are more than welcome!
 
-## Getting started
+* **Backend agnostic**. You can choose the backend you prefer.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+* **Customizable**. Supports custom themes, locales and more. (Soon)
 
-## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## Getting Started
 
-```dart
-const like = 'sample';
+```javascript
+flutter pub add flutter-call-ui
 ```
 
-## Additional information
+### Requirements
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+
+## License
+
+Licensed under the [MIT Lisence](LICENSE)
+
