@@ -7,9 +7,11 @@ abstract class BaseTheme {
     required this.backgoundColor,
     required this.secondaryColor,
     required this.redColor,
+    required this.iconColor,
   });
 
   final Color backgoundColor;
   final Color secondaryColor;
   final Color redColor;
+  final Color iconColor;
 }

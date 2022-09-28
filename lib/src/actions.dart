@@ -61,14 +61,14 @@ class ActionButtons extends StatelessWidget {
               children: [
                 RoundedButton(
                   color: theme.redColor,
-                  iconColor: Colors.white,
+                  iconColor: theme.iconColor,
                   icon: Icons.phone_disabled,
                   press: onPressHangup,
                 ),
                 const Spacer(),
                 RoundedButton(
                   color: theme.secondaryColor,
-                  iconColor: Colors.white,
+                  iconColor: theme.iconColor,
                   icon: micState.icon,
                   press: onPressMic,
                 ),
@@ -76,7 +76,7 @@ class ActionButtons extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20),
                   child: RoundedButton(
                     color: theme.secondaryColor,
-                    iconColor: Colors.white,
+                    iconColor: theme.iconColor,
                     icon: cameraState.icon,
                     press: onPressCamera,
                   ),
