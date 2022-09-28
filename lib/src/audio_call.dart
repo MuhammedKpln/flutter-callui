@@ -19,6 +19,7 @@ class AudioCall extends CallUI {
     required super.user,
     required super.cameraState,
     required super.micState,
+    super.locale,
   }) : super();
 
   @override
@@ -48,6 +49,7 @@ class _AudioCallState extends State<AudioCall> with TimerMixin<AudioCall> {
     return Scaffold(
       appBar: widget.appBarScaffold,
       bottomNavigationBar: _renderBottomNavigationBar(),
+      extendBodyBehindAppBar: true,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -73,7 +75,8 @@ class _AudioCallState extends State<AudioCall> with TimerMixin<AudioCall> {
                   ),
                   renderEstimatedCall((formattedDate) {
                     return Text(
-                      'Incoming $formattedDate'.toUpperCase(),
+                      '${widget.locale.incomingTxt} $formattedDate'
+                          .toUpperCase(),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.6),
                       ),

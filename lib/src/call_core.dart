@@ -21,6 +21,7 @@ class CallUI extends StatefulWidget {
     this.theme = const CallUIDefaultTheme(),
     this.cameraState = CameraState.closed,
     this.micState = MicState.open,
+    this.locale = const CallENLocale(),
   });
 
   factory CallUI.VideoCall({
@@ -37,6 +38,7 @@ class CallUI extends StatefulWidget {
     CameraState cameraState = CameraState.closed,
     MicState micState = MicState.closed,
     BaseTheme theme = const CallUIDefaultTheme(),
+    BaseLocale locale = const CallENLocale(),
   }) {
     return VideoCall(
       remoteStream: remoteStream,
@@ -52,6 +54,7 @@ class CallUI extends StatefulWidget {
       user: user,
       cameraState: cameraState,
       micState: micState,
+      locale: locale,
     );
   }
 
@@ -69,6 +72,7 @@ class CallUI extends StatefulWidget {
     CameraState cameraState = CameraState.closed,
     MicState micState = MicState.closed,
     BaseTheme theme = const CallUIDefaultTheme(),
+    BaseLocale locale = const CallENLocale(),
   }) {
     return AudioCall(
       remoteStream: remoteStream,
@@ -84,6 +88,7 @@ class CallUI extends StatefulWidget {
       user: user,
       cameraState: cameraState,
       micState: micState,
+      locale: locale,
     );
   }
 
@@ -125,6 +130,9 @@ class CallUI extends StatefulWidget {
 
   /// A default theme for the callui.
   CallUserModel user;
+
+  /// App locale
+  BaseLocale locale;
 
   @override
   Widget build(BuildContext context) {
@@ -185,6 +193,7 @@ class _CallUIState extends State<CallUI> {
               user: widget.user,
               cameraState: widget.cameraState,
               micState: widget.micState,
+              locale: widget.locale,
             ),
     );
   }

@@ -20,6 +20,7 @@ class VideoCall extends CallUI {
     super.customActionWidget,
     super.appBarScaffold,
     super.theme,
+    super.locale,
   }) : super();
 
   @override
