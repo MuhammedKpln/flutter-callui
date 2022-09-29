@@ -1,3 +1,5 @@
+# 0.2.2+1
+
 # 0.2.1
 - _swtichToFullscreenAutomatically prevent setstate on dispose
 - Set mirror to true for both streams. Fixes #4
