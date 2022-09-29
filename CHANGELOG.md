@@ -1,3 +1,8 @@
+# 0.2.1
+- _swtichToFullscreenAutomatically prevent setstate on dispose
+- Set mirror to true for both streams. Fixes #4
+- chore: update pubspec homepage
+
 # 0.2.0
 - chore: add badges to readme
 - chore: lint
