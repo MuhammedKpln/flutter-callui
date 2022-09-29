@@ -177,6 +177,7 @@ class _VideoCallState extends State<VideoCall> {
   Widget build(BuildContext context) {
     final localCamera = CameraRenderer(
       renderer: localRenderer,
+      mirror: true,
     );
 
     final remoteCamera = CameraRenderer(
