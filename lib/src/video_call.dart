@@ -89,6 +89,8 @@ class _VideoCallState extends State<VideoCall> {
       Future.delayed(
         const Duration(seconds: 5),
         () {
+          if (!mounted) return;
+
           setState(() {
             enabledFullscreen = true;
           });
